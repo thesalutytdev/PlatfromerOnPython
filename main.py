@@ -52,12 +52,23 @@ class Screen:
 class Game:
     is_running = True
     player = pg.image.load("./assets/window/images/player.png")
+    blocks = {
+        "stone": (87, 84, 78),
+        "grass": (0, 255, 0),
+        "sky": (122, 192, 230),
+        "water": (0, 0, 255),
+        "andesite": (122, 118, 108),
+        "diorite": (163, 163, 163),
+        "sun": (225, 240, 22)
+    }
 
 Screen.__init__(Screen)
 pg.display.set_caption(Screen.title)
 pg.display.set_icon(Screen.icon)
 lowest_level = World.generate_lowest()
 sky_level = World.generate_sky()
+grass_level = World.grass_level()
+sun = World.create_sun()
 TILE_SIZE = 10
 
 while Game.is_running:
@@ -76,23 +87,30 @@ while Game.is_running:
                 Screen.screen.fill(Screen.colors.get("green"))
             elif event.key == pg.K_s:
                 Screen.screen.fill(Screen.colors.get("blue"))
-                Screen.font.render(text="test",
+                Screen.font.render(self=pg.font,
+                                   text=Screen.title,
                                    antialias=False,
                                    color=Screen.colors.get("white"))
 
     for y, row in enumerate(lowest_level):
         for x, tile_type in enumerate(row):
-            if tile_type == 'grass':  # Если тип тайла - трава, рисуем зеленый прямоугольник
-                pg.draw.rect(Screen.screen, (0, 255, 0), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
-            elif tile_type == 'stone':  # Если тип тайла - вода, рисуем синий прямоугольник
-                pg.draw.rect(Screen.screen, (0, 0, 255), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
-            elif tile_type == 'asndesite':  # Если тип тайла - вода, рисуем синий прямоугольник
-                pg.draw.rect(Screen.screen, (255, 0, 0), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+            if tile_type == 'stone':  # Если тип тайла - вода, рисуем синий прямоугольник
+                pg.draw.rect(Screen.screen, Game.blocks.get('stone'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+            elif tile_type == 'andesite':  # Если тип тайла - вода, рисуем синий прямоугольник
+                pg.draw.rect(Screen.screen, Game.blocks.get('andesite'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
             elif tile_type == 'diorite':  # Если тип тайла - вода, рисуем синий прямоугольник
-                pg.draw.rect(Screen.screen, (255, 145, 254), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+                pg.draw.rect(Screen.screen, Game.blocks.get('diorite'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+    for y, row in enumerate(grass_level):
+        for x, tile_type in enumerate(row):
+            if tile_type == 'grass':
+                pg.draw.rect(Screen.screen, Game.blocks.get('grass'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
     for y, row in enumerate(sky_level):
         for x, tile_type in enumerate(row):
-            if tile_type == 'sky':  # Если тип тайла - трава, рисуем зеленый прямоугольник
-                pg.draw.rect(Screen.screen, (255, 255, 255), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+            if tile_type == 'sky':
+                pg.draw.rect(Screen.screen, Game.blocks.get('sky'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
+    for y, row in enumerate(sun):
+        for x, tile_type in enumerate(row):
+            if tile_type == 'sun':
+                pg.draw.rect(Screen.screen, Game.blocks.get('sun'), (x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE))
 
 pg.quit()
