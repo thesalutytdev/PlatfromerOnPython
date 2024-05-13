@@ -3,7 +3,7 @@ import pygame as pg
 import Utils
 
 pg.init()
-myimage = pg.image.load("./assets/window/images/player_new.png")
+myimage = pg.image.load("assets/pack/default/window/images/player_new.png")
 imagerect = myimage.get_rect()
 screen = pg.display.set_mode((600, 300))
 is_running = True

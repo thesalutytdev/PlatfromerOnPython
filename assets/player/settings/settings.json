@@ -1,6 +1,7 @@
 {
   "lang": "en",
-  "icon": "./assets/window/images/icon.png",
-  "font": "./assets/lang/font/Montserrat-Light.ttf",
-  "saves_path": "./logs/"
+  "icon": "./assets/pack/default/window/images/icon.png",
+  "font": "./assets/pack/default/lang/font/Montserrat-Light.ttf",
+  "saves_path": "./logs/",
+  "current_color_pack": "default"
 }
