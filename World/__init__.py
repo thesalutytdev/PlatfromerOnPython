@@ -12,6 +12,20 @@ SUN = HEIGHT / 10 * 2
 SKY = HEIGHT / 3 * 2
 CLOUDS = SKY / 2
 
+class Layer:
+    name: str
+    layer_level: int
+    blocks: dict
+    width: int
+    height: int
+    def new(self, layer: dict):
+        self.name = layer.get('name')
+        self.layer_level = layer.get('layer_level')
+        self.blocks = layer.get('blocks')
+        self.width = layer.get('width')
+        self.height = layer.get('height')
+
+
 def generate_level():
     level = [generate_sky(), grass_level(), create_sun(), generate_lowest()]
     return level
@@ -109,3 +123,22 @@ def create_clouds():
     with open(f"{Engine.WORLD_SAVES}clouds.json", "w") as outfile:
         json.dump(sun_data, outfile)
     return sun_data
+def generate_custom_layer(custom_layer: dict):
+    global tile_type
+    WIDTH = custom_layer.get("width")
+    HEIGHT = custom_layer.get("height")
+    TILE_SIZE = Engine.TILE_SIZE
+    TILES_WIDE = WIDTH // TILE_SIZE
+    TILES_HEIGHT = HEIGHT // TILE_SIZE
+    level_data = []
+    for y in range(int(TILES_WIDE)):
+        row = []
+        for x in range(int(TILES_HEIGHT)):
+            blocks_amount = len(custom_layer.get("blocks"))
+            blocks = custom_layer.get("blocks")
+            random_block = random.randint(0, blocks_amount - 1)
+            row.append(blocks[random_block])
+        level_data.append(row)
+    with open(f"{custom_layer.get('save_to')}{custom_layer.get('name')}.json", "w") as outfile:
+        json.dump(level_data, outfile)
+    return level_data

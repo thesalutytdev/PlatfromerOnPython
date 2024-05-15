@@ -1,4 +1,6 @@
+import Engine.JSON
 import Engine.Events
+import Engine.Video
 import World
 from Player import Player
 
@@ -10,7 +12,7 @@ pg.init()
 Screen = Engine.config.Screen
 Game = Engine.config.Game
 Events = Engine.Events.Events
-
+Json = Engine.JSON.JSON
 Screen.__init__(Screen)
 pg.display.set_caption(Screen.title)
 pg.display.set_icon(Screen.icon)
@@ -34,10 +36,12 @@ while Game.is_running:
                 have_generated_world = True
                 Events.on_world_gen(Events)
                 Engine.draw_level(sky_level, grass_level, sun, lowest_level)
+                Events.on_world_generated(Events)
             elif event.key == pg.K_r:
                 have_generated_world = True
                 Events.on_world_regen(Events)
                 Engine.draw_level(World.generate_sky(), World.grass_level(), World.create_sun(), World.generate_lowest())
+                # Engine.Video.draw_layer(sun)
         Player.game_saver(Player)
     pg.display.update()
 exit("[Main] Game exited")

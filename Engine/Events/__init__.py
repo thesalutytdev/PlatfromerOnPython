@@ -10,3 +10,6 @@ class Events:
     def on_world_regen(self):
         Mods.on_world_regen()
         print("[Events] On world regeneration event worked")
+    def on_world_generated(self):
+        Mods.on_world_generated()
+        print("[Events] On world generated event worked")

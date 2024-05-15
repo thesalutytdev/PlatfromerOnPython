@@ -47,7 +47,8 @@ class Screen:
             WIDTH = monitor.width
             HEIGHT = monitor.height
         return [WIDTH, HEIGHT]
-
+    def screen_filler(self, color: tuple):
+        self.screen.fill(color)
 class Game:
     is_running = True
     player = pg.image.load("assets/pack/default/window/images/player.png")
