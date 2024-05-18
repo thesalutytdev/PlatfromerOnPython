@@ -13,6 +13,7 @@ Screen = Engine.config.Screen
 Game = Engine.config.Game
 Events = Engine.Events.Events
 Json = Engine.JSON.JSON
+Clock = pg.time.Clock()
 Screen.__init__(Screen)
 pg.display.set_caption(Screen.title)
 pg.display.set_icon(Screen.icon)
@@ -24,6 +25,7 @@ have_generated_world = False
 TILE_SIZE = 10
 Events.on_load(Events)
 while Game.is_running:
+    Clock.tick(Game.FPS)
     Player.__init__(Player, "TheSALUTYT", "assets/player/saves/save.json")
 
     for event in pg.event.get():

@@ -44,6 +44,7 @@ def on_world_regen():
     print("[ExampleMod] Enjoy your new world ^-^")
 def on_world_generated():
     generated_level = layers.generate(layers)
+    layers.draw(self=layers, layer=generated_level)
     print("[ExampleMod] Generated custom layer")
 def only_block_generation(layer_info: dict):
     global tile_type

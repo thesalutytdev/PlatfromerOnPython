@@ -16,7 +16,6 @@ def draw_layer(layer: list):
             else:
                 print("[Engine::Video] Invalid block in layer configuration")
                 return "Invalid block!"
-
-# def draw_level(layers: list[dict]):
-    # for layer in enumerate(layers):
-    #     for layer_level in layer.get('layer_level'):
+def draw_image(image_path: str):
+    image = pg.image.load(image_path)
+    pg.sprite.Sprite.add()

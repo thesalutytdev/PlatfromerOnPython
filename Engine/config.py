@@ -50,6 +50,7 @@ class Screen:
     def screen_filler(self, color: tuple):
         self.screen.fill(color)
 class Game:
+    FPS = 60
     is_running = True
     player = pg.image.load("assets/pack/default/window/images/player.png")
     blocks = pack.BLOCKS
