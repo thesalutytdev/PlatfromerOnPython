@@ -5,7 +5,8 @@ import World
 from Player import Player
 
 from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import os
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '0'
 import pygame as pg
 
 pg.init()
@@ -43,7 +44,6 @@ while Game.is_running:
                 have_generated_world = True
                 Events.on_world_regen(Events)
                 Engine.draw_level(World.generate_sky(), World.grass_level(), World.create_sun(), World.generate_lowest())
-                # Engine.Video.draw_layer(sun)
         Player.game_saver(Player)
     pg.display.update()
 exit("[Main] Game exited")

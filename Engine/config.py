@@ -3,8 +3,8 @@ import assets.pack.current.pack_resources as pack
 import pygame as pg
 from screeninfo import get_monitors
 
-WIDTH = 1000
-HEIGHT = 800
+WIDTH = 600
+HEIGHT = 300
 
 try:
     ru_lang_raw = ""

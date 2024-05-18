@@ -1,4 +1,6 @@
 import Mods
+import Player
+
 
 class Events:
     def on_load(self):
@@ -13,3 +15,4 @@ class Events:
     def on_world_generated(self):
         Mods.on_world_generated()
         print("[Events] On world generated event worked")
+        Player.Player.create_sprite(Player.Player)

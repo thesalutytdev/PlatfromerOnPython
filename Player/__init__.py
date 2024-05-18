@@ -1,7 +1,11 @@
 import json
 
 import Engine
+import Engine.Video.Sprites
 
+Sprites = Engine.Video.Sprites.Sprites
+Game = Engine.config.Game
+Screen = Engine.config.Screen
 
 class Player:
     name = ""
@@ -53,3 +57,5 @@ class Player:
         self.experience = exp
     def get_exp(self):
         return self.experience
+    def create_sprite(self):
+        Sprites.create(Sprites, Screen.colors.get('red'), 100, 100)

@@ -34,8 +34,8 @@ def main():
     layers.create(self=layers,
                   name="example_mod_layer",
                   layer_level=10,
-                  width=1000,
-                  height=500,
+                  width=Engine.config.WIDTH / 2,
+                  height=Engine.config.HEIGHT / 2,
                   blocks=["example_mod_block", "water"],
                   save_to=Engine.WORLD_SAVES)
 def on_world_gen():
