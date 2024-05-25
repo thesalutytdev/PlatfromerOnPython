@@ -3,6 +3,7 @@ import Player
 
 
 class Events:
+    key: str = ""
     def on_load(self):
         Mods.on_load()
         print("[Events] On load event worked")
@@ -16,3 +17,5 @@ class Events:
         Mods.on_world_generated()
         print("[Events] On world generated event worked")
         Player.Player.create_sprite(Player.Player)
+    def key_event(self, key: str):
+        self.key = key

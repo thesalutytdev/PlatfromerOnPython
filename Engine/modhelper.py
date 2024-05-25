@@ -5,6 +5,7 @@ import assets.pack.current.pack_resources as pack
 mod_layers = {}
 mod_blocks = {}
 mod_colors = {}
+mod_scripts = {}
 
 class Block:
     game_blocks = pack.BLOCKS
