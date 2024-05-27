@@ -2,11 +2,11 @@ import Engine.JSON
 import Engine.Events
 import Engine.Video
 import Engine.gamecrasher
+import Engine.tick as Tick
 import World
 from Player import Player
 
 from os import environ
-import os
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '0'
 import pygame as pg
 
@@ -28,14 +28,16 @@ TILE_SIZE = 10
 Events.on_load(Events)
 while Game.is_running:
     Clock.tick(Game.FPS)
+    Tick.Tick.tick(Tick.Tick)
     Player.__init__(Player, "TheSALUTYT", "assets/player/saves/save.json")
-
     for event in pg.event.get():
         if event.type == pg.QUIT:
             Game.is_running = False
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_q:
                 Game.is_running = False
+            elif event.key == pg.K_t:
+                Events.key_event(Events, "t")
             elif event.key == pg.K_g:
                 have_generated_world = True
                 Events.on_world_gen(Events)

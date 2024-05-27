@@ -46,6 +46,10 @@ def on_world_generated():
     generated_level = layers.generate(layers)
     layers.draw(self=layers, layer=generated_level)
     print("[ExampleMod] Generated custom layer")
+def on_button(button: str):
+    print(f"[ExampleMod] Button {button} pressed")
+    if button == "T":
+        print(f"[ExampleMod] Current tick: {Tick.Tick.getTick()}")
 def only_block_generation(layer_info: dict):
     global tile_type
     tile_type = layer_info.get('block')

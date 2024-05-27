@@ -1,3 +1,14 @@
 {
-    "workbench.iconTheme": "a-file-icon-vscode"
+    "workbench.iconTheme": "a-file-icon-vscode",
+    "spellright.language": [
+        "en",
+        "ru"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "javascript",
+        "python"
+    ]
 }
