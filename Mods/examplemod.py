@@ -2,6 +2,7 @@ import json
 
 import Engine.config
 import Engine.modhelper as modhelp
+import Engine.tick as Tick
 
 modId = "example"
 modName = "Example Mod"
@@ -28,6 +29,7 @@ modInfo = {
 blocks = modhelp.Block
 colors = modhelp.Color
 layers = modhelp.Layer
+current_tick = 0
 def main():
     blocks.create(blocks, "example_mod_block", (100, 100, 100))
     colors.create(colors, "example_mod_color", (100, 100, 100))
@@ -36,7 +38,7 @@ def main():
                   layer_level=10,
                   width=Engine.config.WIDTH / 2,
                   height=Engine.config.HEIGHT / 2,
-                  blocks=["example_mod_block", "water"],
+                  blocks=["example_mod_block", "water", "grass", "sun", "stone"],
                   save_to=Engine.WORLD_SAVES)
 def on_world_gen():
     print("[ExampleMod] Enjoy your world ^-^")
@@ -48,7 +50,7 @@ def on_world_generated():
     print("[ExampleMod] Generated custom layer")
 def on_button(button: str):
     print(f"[ExampleMod] Button {button} pressed")
-    if button == "T":
+    if button == "f":
         print(f"[ExampleMod] Current tick: {Tick.Tick.getTick()}")
 def only_block_generation(layer_info: dict):
     global tile_type
